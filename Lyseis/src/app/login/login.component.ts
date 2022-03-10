@@ -4,6 +4,8 @@ import Utils from '../libs/utils';
 import { LoginService } from './login.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +23,7 @@ export class LoginComponent implements OnInit {
   }
   ngOnInit(): void {
     this.formControls = this.formBuilder.group({
-      userName: ['', [Validators.required, ]],
+      userName: ['', [Validators.required,]],
       password: ['', [Validators.required]]
     });
   }
@@ -29,26 +31,29 @@ export class LoginComponent implements OnInit {
   Login() {
     try {
       if (this.formControls?.valid) {
-        let params = new URLSearchParams();
-        params.append("userName", this.formControls.controls['userName'].value)
-        params.append("password", this.formControls.controls['password'].value)
 
-        this.loginService.GetToken().subscribe((response: ResponseModel<{ token: string, expirationDate: Date }>) => {
-          if (response.status == 200) {
-            let token = response.data?.token;
-            let expirationDate = response.data?.expirationDate;
-            if (token && expirationDate) {
+        this.loginService.GetToken(this.formControls.controls['userName'].value, this.formControls.controls['password'].value)
+          .subscribe({
+            next: (response: ResponseModel<{ token: string, expirationDate: Date }>) => {
+              let token = response.data?.token;
+              let expirationDate = response.data?.expirationDate;
+              if (token && expirationDate) {
 
-              let tokenWasSaved = Utils.SetSessionStorage('token', token);
-              let expirationDateWasSaved = Utils.SetSessionStorage('token-expiration-date', expirationDate.toString());
+                let tokenWasSaved = Utils.SetSessionStorage('token', token);
+                let expirationDateWasSaved = Utils.SetSessionStorage('token-expiration-date', expirationDate.toString());
 
-              if (tokenWasSaved && expirationDateWasSaved) {
-                // redirect to layout
-                this.router.navigate(['/']);
+                if (tokenWasSaved && expirationDateWasSaved) {
+                  // redirect to layout
+                  this.router.navigate(['/']);
+                }
               }
+            },
+            error: (error: HttpErrorResponse) => {
+              Swal.fire('Algo salió mal', error.error, 'error');
             }
-          }
-        });
+          });
+      } else {
+        Swal.fire('Faltó algo?', 'Por favor diligencie los campos', 'question');
       }
     } catch (error) {
       console.log(error);
