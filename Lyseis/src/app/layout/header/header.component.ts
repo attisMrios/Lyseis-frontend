@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import Utils from 'src/app/libs/utils';
 
 @Component({
   selector: 'app-header',
@@ -11,6 +12,7 @@ export class HeaderComponent {
   constructor(private router: Router) { }
 
   Logout() {
+    Utils.CleanSessionStorage();
     this.router.navigate(['/login']);
   }
 
