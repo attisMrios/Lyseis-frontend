@@ -7,13 +7,15 @@ import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SideBarComponent } from './layout/side-bar/side-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     LayoutComponent,
-    HeaderComponent
+    HeaderComponent,
+    SideBarComponent
   ],
   imports: [
     BrowserModule,
