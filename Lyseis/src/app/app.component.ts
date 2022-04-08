@@ -1,24 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router'
-import Utils from './libs/utils';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: '<router-outlet></router-outlet>'
+  templateUrl: './app.component.html',
 })
-export class AppComponent implements OnInit{
 
-  title = 'Lyseis';
-
-  constructor(public route: Router) {
-    
-  }
-
-  ngOnInit(): void {
-    let token = Utils.GetSessionStorage('token');
-    if(token == ''){
-      this.route.navigate(['/login']);
-    }
-  }
-
+export class AppComponent {
+  title = 'ArchitectUI - Angular 7 Bootstrap 5 & Material Design Admin Dashboard Template';
 }
