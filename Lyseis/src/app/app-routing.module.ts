@@ -51,11 +51,13 @@ import {LayoutComponent} from './DemoPages/Forms/Elements/layout/layout.componen
 // Charts
 
 import {ChartjsComponent} from './DemoPages/Charts/chartjs/chartjs.component';
+import { RoutesGuard } from './base/route.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: BaseLayoutComponent,
+    canActivate: [RoutesGuard],
     children: [
 
       {path: '', component: AnalyticsComponent, data: {extraParameter: 'dashboardsMenu'}},
@@ -82,9 +84,7 @@ const routes: Routes = [
     path: '',
     component: PagesLayoutComponent,
     children: [
-      {path: 'pages/login-boxed', component: LoginBoxedComponent, data: {extraParameter: ''}},
-      {path: 'pages/register-boxed', component: RegisterBoxedComponent, data: {extraParameter: ''}},
-      {path: 'pages/forgot-password-boxed', component: ForgotPasswordBoxedComponent, data: {extraParameter: ''}},
+      {path: 'login', component: LoginBoxedComponent, data: {extraParameter: ''}}
     ]
   },
   {path: '**', redirectTo: ''}
@@ -97,7 +97,8 @@ const routes: Routes = [
     anchorScrolling: 'enabled',
     relativeLinkResolution: 'legacy'
 })],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [RoutesGuard]
 })
 export class AppRoutingModule {
 }

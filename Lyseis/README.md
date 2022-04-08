@@ -1,3 +1,4 @@
+https://github.com/DashboardPack/architectui-angular-theme-free
 # ArchitectUI - Angular 11 Bootstrap 5
 
 This admin dashboard was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.2.
