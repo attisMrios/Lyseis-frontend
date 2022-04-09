@@ -3,6 +3,7 @@ import {ThemeOptions} from '../../../theme-options';
 import {select} from '@angular-redux/store';
 import {Observable} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 @Component({
   selector: 'app-sidebar',
@@ -16,6 +17,8 @@ export class SidebarComponent implements OnInit {
   }
 
   @select('config') public config$: Observable<any>;
+
+  public config: PerfectScrollbarConfigInterface = {suppressScrollX: false, suppressScrollY: false};
 
   private newInnerWidth: number;
   private innerWidth: number;
@@ -52,4 +55,6 @@ export class SidebarComponent implements OnInit {
     }
 
   }
+
+
 }
