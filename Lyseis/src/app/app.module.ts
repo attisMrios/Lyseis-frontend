@@ -24,29 +24,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 // LAYOUT
 
-import {BaseLayoutComponent} from './Layout/base-layout/base-layout.component';
-import {PagesLayoutComponent} from './Layout/pages-layout/pages-layout.component';
-import {PageTitleComponent} from './Layout/Components/page-title/page-title.component';
-
-// HEADER
-
-import {HeaderComponent} from './Layout/Components/header/header.component';
-import {SearchBoxComponent} from './Layout/Components/header/elements/search-box/search-box.component';
-import {UserBoxComponent} from './Layout/Components/header/elements/user-box/user-box.component';
-
-// SIDEBAR
-
-import {SidebarComponent} from './Layout/Components/sidebar/sidebar.component';
-import {LogoComponent} from './Layout/Components/sidebar/elements/logo/logo.component';
-
-// FOOTER
-
-import {FooterComponent} from './Layout/Components/footer/footer.component';
-
-// DEMO PAGES
-
-// Dashboards
-
 import {AnalyticsComponent} from './DemoPages/Dashboards/analytics/analytics.component';
 
 // Pages
@@ -103,6 +80,15 @@ import {BubbleChartComponent} from './DemoPages/Charts/chartjs/examples/bubble-c
 import {DynamicChartComponent} from './DemoPages/Charts/chartjs/examples/dynamic-chart/dynamic-chart.component';
 import {DoughnutChartComponent} from './DemoPages/Charts/chartjs/examples/doughnut-chart/doughnut-chart.component';
 import {PieChartComponent} from './DemoPages/Charts/chartjs/examples/pie-chart/pie-chart.component';
+import { BaseLayoutComponent } from './layout/base-layout/base-layout.component';
+import { FooterComponent } from './layout/Components/footer/footer.component';
+import { SearchBoxComponent } from './layout/Components/header/elements/search-box/search-box.component';
+import { UserBoxComponent } from './layout/Components/header/elements/user-box/user-box.component';
+import { HeaderComponent } from './layout/Components/header/header.component';
+import { PageTitleComponent } from './layout/Components/page-title/page-title.component';
+import { LogoComponent } from './layout/Components/sidebar/elements/logo/logo.component';
+import { SidebarComponent } from './layout/Components/sidebar/sidebar.component';
+import { PagesLayoutComponent } from './layout/pages-layout/pages-layout.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true

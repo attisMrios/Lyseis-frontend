@@ -1,9 +1,6 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 
-import {BaseLayoutComponent} from './Layout/base-layout/base-layout.component';
-import {PagesLayoutComponent} from './Layout/pages-layout/pages-layout.component';
-
 // DEMO PAGES
 
 // Dashboards
@@ -12,9 +9,7 @@ import {AnalyticsComponent} from './DemoPages/Dashboards/analytics/analytics.com
 
 // Pages
 
-import {ForgotPasswordBoxedComponent} from './DemoPages/UserPages/forgot-password-boxed/forgot-password-boxed.component';
 import {LoginBoxedComponent} from './DemoPages/UserPages/login-boxed/login-boxed.component';
-import {RegisterBoxedComponent} from './DemoPages/UserPages/register-boxed/register-boxed.component';
 
 // Elements
 
@@ -52,6 +47,8 @@ import {LayoutComponent} from './DemoPages/Forms/Elements/layout/layout.componen
 
 import {ChartjsComponent} from './DemoPages/Charts/chartjs/chartjs.component';
 import { RoutesGuard } from './base/route.guard';
+import { BaseLayoutComponent } from './layout/base-layout/base-layout.component';
+import { PagesLayoutComponent } from './layout/pages-layout/pages-layout.component';
 
 const routes: Routes = [
   {
