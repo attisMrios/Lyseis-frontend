@@ -24,62 +24,62 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 // LAYOUT
 
-import {AnalyticsComponent} from './DemoPages/Dashboards/analytics/analytics.component';
+import {AnalyticsComponent} from './LyseisModules/Dashboards/analytics/analytics.component';
 
 // Pages
 
-import {ForgotPasswordBoxedComponent} from './DemoPages/UserPages/forgot-password-boxed/forgot-password-boxed.component';
-import {LoginBoxedComponent} from './DemoPages/UserPages/login-boxed/login-boxed.component';
-import {RegisterBoxedComponent} from './DemoPages/UserPages/register-boxed/register-boxed.component';
+import {ForgotPasswordBoxedComponent} from './LyseisModules/UserPages/forgot-password-boxed/forgot-password-boxed.component';
+import {LoginBoxedComponent} from './LyseisModules/UserPages/login-boxed/login-boxed.component';
+import {RegisterBoxedComponent} from './LyseisModules/UserPages/register-boxed/register-boxed.component';
 
 // Elements
 
-import {StandardComponent} from './DemoPages/Elements/Buttons/standard/standard.component';
-import {DropdownsComponent} from './DemoPages/Elements/dropdowns/dropdowns.component';
-import {CardsComponent} from './DemoPages/Elements/cards/cards.component';
-import {ListGroupsComponent} from './DemoPages/Elements/list-groups/list-groups.component';
-import {TimelineComponent} from './DemoPages/Elements/timeline/timeline.component';
-import {IconsComponent} from './DemoPages/Elements/icons/icons.component';
+import {StandardComponent} from './LyseisModules/Elements/Buttons/standard/standard.component';
+import {DropdownsComponent} from './LyseisModules/Elements/dropdowns/dropdowns.component';
+import {CardsComponent} from './LyseisModules/Elements/cards/cards.component';
+import {ListGroupsComponent} from './LyseisModules/Elements/list-groups/list-groups.component';
+import {TimelineComponent} from './LyseisModules/Elements/timeline/timeline.component';
+import {IconsComponent} from './LyseisModules/Elements/icons/icons.component';
 
 // Components
 
-import {AccordionsComponent} from './DemoPages/Components/accordions/accordions.component';
-import {TabsComponent} from './DemoPages/Components/tabs/tabs.component';
-import {CarouselComponent} from './DemoPages/Components/carousel/carousel.component';
-import {ModalsComponent} from './DemoPages/Components/modals/modals.component';
-import {ProgressBarComponent} from './DemoPages/Components/progress-bar/progress-bar.component';
-import {PaginationComponent} from './DemoPages/Components/pagination/pagination.component';
-import {TooltipsPopoversComponent} from './DemoPages/Components/tooltips-popovers/tooltips-popovers.component';
+import {AccordionsComponent} from './LyseisModules/Components/accordions/accordions.component';
+import {TabsComponent} from './LyseisModules/Components/tabs/tabs.component';
+import {CarouselComponent} from './LyseisModules/Components/carousel/carousel.component';
+import {ModalsComponent} from './LyseisModules/Components/modals/modals.component';
+import {ProgressBarComponent} from './LyseisModules/Components/progress-bar/progress-bar.component';
+import {PaginationComponent} from './LyseisModules/Components/pagination/pagination.component';
+import {TooltipsPopoversComponent} from './LyseisModules/Components/tooltips-popovers/tooltips-popovers.component';
 
 // Tables
 
-import {RegularComponent} from './DemoPages/Tables/regular/regular.component';
-import {TablesMainComponent} from './DemoPages/Tables/tables-main/tables-main.component';
+import {RegularComponent} from './LyseisModules/Tables/regular/regular.component';
+import {TablesMainComponent} from './LyseisModules/Tables/tables-main/tables-main.component';
 
 // Widgets
 
-import {ChartBoxes3Component} from './DemoPages/Widgets/chart-boxes3/chart-boxes3.component';
+import {ChartBoxes3Component} from './LyseisModules/Widgets/chart-boxes3/chart-boxes3.component';
 
 // Forms Elements
 
-import {ControlsComponent} from './DemoPages/Forms/Elements/controls/controls.component';
-import {LayoutComponent} from './DemoPages/Forms/Elements/layout/layout.component';
+import {ControlsComponent} from './LyseisModules/Forms/Elements/controls/controls.component';
+import {LayoutComponent} from './LyseisModules/Forms/Elements/layout/layout.component';
 
 // Charts
 
-import {ChartjsComponent} from './DemoPages/Charts/chartjs/chartjs.component';
+import {ChartjsComponent} from './LyseisModules/Charts/chartjs/chartjs.component';
 
 // Chart.js Examples
 
-import {LineChartComponent} from './DemoPages/Charts/chartjs/examples/line-chart/line-chart.component';
-import {BarChartComponent} from './DemoPages/Charts/chartjs/examples/bar-chart/bar-chart.component';
-import {ScatterChartComponent} from './DemoPages/Charts/chartjs/examples/scatter-chart/scatter-chart.component';
-import {RadarChartComponent} from './DemoPages/Charts/chartjs/examples/radar-chart/radar-chart.component';
-import {PolarAreaChartComponent} from './DemoPages/Charts/chartjs/examples/polar-area-chart/polar-area-chart.component';
-import {BubbleChartComponent} from './DemoPages/Charts/chartjs/examples/bubble-chart/bubble-chart.component';
-import {DynamicChartComponent} from './DemoPages/Charts/chartjs/examples/dynamic-chart/dynamic-chart.component';
-import {DoughnutChartComponent} from './DemoPages/Charts/chartjs/examples/doughnut-chart/doughnut-chart.component';
-import {PieChartComponent} from './DemoPages/Charts/chartjs/examples/pie-chart/pie-chart.component';
+import {LineChartComponent} from './LyseisModules/Charts/chartjs/examples/line-chart/line-chart.component';
+import {BarChartComponent} from './LyseisModules/Charts/chartjs/examples/bar-chart/bar-chart.component';
+import {ScatterChartComponent} from './LyseisModules/Charts/chartjs/examples/scatter-chart/scatter-chart.component';
+import {RadarChartComponent} from './LyseisModules/Charts/chartjs/examples/radar-chart/radar-chart.component';
+import {PolarAreaChartComponent} from './LyseisModules/Charts/chartjs/examples/polar-area-chart/polar-area-chart.component';
+import {BubbleChartComponent} from './LyseisModules/Charts/chartjs/examples/bubble-chart/bubble-chart.component';
+import {DynamicChartComponent} from './LyseisModules/Charts/chartjs/examples/dynamic-chart/dynamic-chart.component';
+import {DoughnutChartComponent} from './LyseisModules/Charts/chartjs/examples/doughnut-chart/doughnut-chart.component';
+import {PieChartComponent} from './LyseisModules/Charts/chartjs/examples/pie-chart/pie-chart.component';
 import { BaseLayoutComponent } from './layout/base-layout/base-layout.component';
 import { FooterComponent } from './layout/Components/footer/footer.component';
 import { SearchBoxComponent } from './layout/Components/header/elements/search-box/search-box.component';
@@ -89,6 +89,7 @@ import { PageTitleComponent } from './layout/Components/page-title/page-title.co
 import { LogoComponent } from './layout/Components/sidebar/elements/logo/logo.component';
 import { SidebarComponent } from './layout/Components/sidebar/sidebar.component';
 import { PagesLayoutComponent } from './layout/pages-layout/pages-layout.component';
+import { DefaultDashboardComponent } from './LyseisModules/Dashboards/default-dashboard/default-dashboard.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -179,6 +180,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     DynamicChartComponent,
     BubbleChartComponent,
     ScatterChartComponent,
+    DefaultDashboardComponent,
   ],
   imports: [
     BrowserModule,

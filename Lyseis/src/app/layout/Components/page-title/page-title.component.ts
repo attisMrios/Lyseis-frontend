@@ -13,5 +13,6 @@ export class PageTitleComponent {
   @Input() heading;
   @Input() subheading;
   @Input() icon;
+  @Input() showCreateButton: boolean = false;
 
 }

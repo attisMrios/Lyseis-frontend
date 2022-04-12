@@ -5,50 +5,51 @@ import {Routes, RouterModule} from '@angular/router';
 
 // Dashboards
 
-import {AnalyticsComponent} from './DemoPages/Dashboards/analytics/analytics.component';
+import {AnalyticsComponent} from './LyseisModules/Dashboards/analytics/analytics.component';
 
 // Pages
 
-import {LoginBoxedComponent} from './DemoPages/UserPages/login-boxed/login-boxed.component';
+import {LoginBoxedComponent} from './LyseisModules/UserPages/login-boxed/login-boxed.component';
 
 // Elements
 
-import {StandardComponent} from './DemoPages/Elements/Buttons/standard/standard.component';
-import {DropdownsComponent} from './DemoPages/Elements/dropdowns/dropdowns.component';
-import {CardsComponent} from './DemoPages/Elements/cards/cards.component';
-import {ListGroupsComponent} from './DemoPages/Elements/list-groups/list-groups.component';
-import {TimelineComponent} from './DemoPages/Elements/timeline/timeline.component';
-import {IconsComponent} from './DemoPages/Elements/icons/icons.component';
+import {StandardComponent} from './LyseisModules/Elements/Buttons/standard/standard.component';
+import {DropdownsComponent} from './LyseisModules/Elements/dropdowns/dropdowns.component';
+import {CardsComponent} from './LyseisModules/Elements/cards/cards.component';
+import {ListGroupsComponent} from './LyseisModules/Elements/list-groups/list-groups.component';
+import {TimelineComponent} from './LyseisModules/Elements/timeline/timeline.component';
+import {IconsComponent} from './LyseisModules/Elements/icons/icons.component';
 
 // Components
 
-import {AccordionsComponent} from './DemoPages/Components/accordions/accordions.component';
-// import {TabsComponent} from './DemoPages/Components/tabs/tabs.component';
-import {CarouselComponent} from './DemoPages/Components/carousel/carousel.component';
-import {ModalsComponent} from './DemoPages/Components/modals/modals.component';
-import {ProgressBarComponent} from './DemoPages/Components/progress-bar/progress-bar.component';
-import {PaginationComponent} from './DemoPages/Components/pagination/pagination.component';
-import {TooltipsPopoversComponent} from './DemoPages/Components/tooltips-popovers/tooltips-popovers.component';
+import {AccordionsComponent} from './LyseisModules/Components/accordions/accordions.component';
+// import {TabsComponent} from './LyseisModules/Components/tabs/tabs.component';
+import {CarouselComponent} from './LyseisModules/Components/carousel/carousel.component';
+import {ModalsComponent} from './LyseisModules/Components/modals/modals.component';
+import {ProgressBarComponent} from './LyseisModules/Components/progress-bar/progress-bar.component';
+import {PaginationComponent} from './LyseisModules/Components/pagination/pagination.component';
+import {TooltipsPopoversComponent} from './LyseisModules/Components/tooltips-popovers/tooltips-popovers.component';
 
 // Tables
 
-import {TablesMainComponent} from './DemoPages/Tables/tables-main/tables-main.component';
+import {TablesMainComponent} from './LyseisModules/Tables/tables-main/tables-main.component';
 
 // Widgets
 
-import {ChartBoxes3Component} from './DemoPages/Widgets/chart-boxes3/chart-boxes3.component';
+import {ChartBoxes3Component} from './LyseisModules/Widgets/chart-boxes3/chart-boxes3.component';
 
 // Forms Elements
 
-import {ControlsComponent} from './DemoPages/Forms/Elements/controls/controls.component';
-import {LayoutComponent} from './DemoPages/Forms/Elements/layout/layout.component';
+import {ControlsComponent} from './LyseisModules/Forms/Elements/controls/controls.component';
+import {LayoutComponent} from './LyseisModules/Forms/Elements/layout/layout.component';
 
 // Charts
 
-import {ChartjsComponent} from './DemoPages/Charts/chartjs/chartjs.component';
+import {ChartjsComponent} from './LyseisModules/Charts/chartjs/chartjs.component';
 import { RoutesGuard } from './base/route.guard';
 import { BaseLayoutComponent } from './layout/base-layout/base-layout.component';
 import { PagesLayoutComponent } from './layout/pages-layout/pages-layout.component';
+import { DefaultDashboardComponent } from './LyseisModules/Dashboards/default-dashboard/default-dashboard.component';
 
 const routes: Routes = [
   {
@@ -57,7 +58,7 @@ const routes: Routes = [
     canActivate: [RoutesGuard],
     children: [
 
-      {path: '', component: AnalyticsComponent, data: {extraParameter: 'dashboardsMenu'}},
+      {path: '', component: DefaultDashboardComponent, data: {extraParameter: 'dashboard'}},
       {path: 'elements/buttons-standard', component: StandardComponent, data: {extraParameter: 'elementsMenu'}},
       {path: 'elements/dropdowns', component: DropdownsComponent, data: {extraParameter: 'elementsMenu'}},
       {path: 'elements/icons', component: IconsComponent, data: {extraParameter: 'elementsMenu'}},

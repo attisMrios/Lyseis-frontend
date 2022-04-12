@@ -25,10 +25,12 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets/images"
+              "src/assets/images",
+              "src/assets/lyseis-icons"
             ],
             "styles": [
               "src/styles.scss",
+              "src/assets/lyseis-icons/lyseis-icons.css",
               "./node_modules/font-awesome/scss/font-awesome.scss"
             ],
             "scripts": []
