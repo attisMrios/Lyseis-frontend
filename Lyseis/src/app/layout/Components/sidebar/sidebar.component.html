@@ -16,14 +16,14 @@
       <perfect-scrollbar class="scroll-container" fxFlex="auto" [config]="config" [scrollIndicators]="true">
         <div class="v-sidebar-menu vsm-default">
           <div class="vsm-list">
-            <ngb-accordion [destroyOnHide]="false" [closeOthers]="true" [activeIds]="extraParameter">
+            <ngb-accordion [destroyOnHide]="false" [closeOthers]="true">
               <ngb-panel>
                 <ng-template ngbPanelHeader>
                   <div class="vsm-header">Main Navigation</div>
                 </ng-template>
               </ngb-panel>
 
-              <ngb-panel id="dashboard">
+              <ngb-panel id="a">
                 <ng-template ngbPanelHeader>
                   <div class="vsm-list">
                     <div class="vsm-item">
@@ -36,7 +36,7 @@
                 </ng-template>
               </ngb-panel>
 
-              <ngb-panel id="dashboardsMenu">
+              <ngb-panel id="inventarios">
                 <ng-template ngbPanelHeader>
                   <button ngbPanelToggle class="vsm-link">
                     <i class="vsm-icon pe-7s-rocket"></i>
@@ -48,7 +48,7 @@
                   <div class="vsm-dropdown">
                     <div class="vsm-list">
                       <div class="vsm-item">
-                        <a routerLink="" routerLinkActive="active-item" [routerLinkActiveOptions]="{exact: true}"
+                        <a routerLink="inventories/" routerLinkActive="active-item" [routerLinkActiveOptions]="{exact: true}"
                           class="vsm-link">
                           <span class="vsm-title">Productos</span>
                         </a>

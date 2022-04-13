@@ -57,25 +57,8 @@ const routes: Routes = [
     component: BaseLayoutComponent,
     canActivate: [RoutesGuard],
     children: [
-
-      {path: '', component: DefaultDashboardComponent, data: {extraParameter: 'dashboard'}},
-      {path: 'elements/buttons-standard', component: StandardComponent, data: {extraParameter: 'elementsMenu'}},
-      {path: 'elements/dropdowns', component: DropdownsComponent, data: {extraParameter: 'elementsMenu'}},
-      {path: 'elements/icons', component: IconsComponent, data: {extraParameter: 'elementsMenu'}},
-      {path: 'elements/cards', component: CardsComponent, data: {extraParameter: 'elementsMenu'}},
-      {path: 'elements/list-group', component: ListGroupsComponent, data: {extraParameter: 'elementsMenu'}},
-      {path: 'elements/timeline', component: TimelineComponent, data: {extraParameter: 'elementsMenu'}},
-      {path: 'components/accordions', component: AccordionsComponent, data: {extraParameter: 'componentsMenu'}},
-      {path: 'components/modals', component: ModalsComponent, data: {extraParameter: 'componentsMenu'}},
-      {path: 'components/progress-bar', component: ProgressBarComponent, data: {extraParameter: 'componentsMenu'}},
-      {path: 'components/tooltips-popovers', component: TooltipsPopoversComponent, data: {extraParameter: 'componentsMenu'}},
-      {path: 'components/carousel', component: CarouselComponent, data: {extraParameter: 'componentsMenu'}},
-      {path: 'components/pagination', component: PaginationComponent, data: {extraParameter: 'componentsMenu'}},
-      {path: 'tables/bootstrap', component: TablesMainComponent, data: {extraParameter: 'tablesMenu'}},
-      {path: 'widgets/chart-boxes-3', component: ChartBoxes3Component, data: {extraParameter: 'pagesMenu3'}},
-      {path: 'forms/controls', component: ControlsComponent, data: {extraParameter: 'formElementsMenu'}},
-      {path: 'forms/layouts', component: LayoutComponent, data: {extraParameter: 'formElementsMenu'}},
-      {path: 'charts/chartjs', component: ChartjsComponent, data: {extraParameter: ''}},
+      {path: '', component: DefaultDashboardComponent, data: {extraParameter: ''}},
+      {path: 'inventories', loadChildren: () => import('./LyseisModules/inventories/inventories.module').then(m => m.InventoriesModule), data: {extraParameter: ''}}
     ]
   },
   {
