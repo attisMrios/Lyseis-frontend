@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'lyseis';
-  src:  url('./lyseis.eot?h9w88g');
-  src:  url('./lyseis.eot?h9w88g#iefix') format('embedded-opentype'),
-    url('./lyseis.ttf?h9w88g') format('truetype'),
-    url('./lyseis.woff?h9w88g') format('woff'),
-    url('./lyseis.svg?h9w88g#lyseis') format('svg');
+  src:  url('./lyseis.eot?5xom5l');
+  src:  url('./lyseis.eot?5xom5l#iefix') format('embedded-opentype'),
+    url('./lyseis.ttf?5xom5l') format('truetype'),
+    url('./lyseis.woff?5xom5l') format('woff'),
+    url('./lyseis.svg?5xom5l#lyseis') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,7 +25,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.ly6-products:before {
+.ly6-boxes:before {
   content: "\e900";
 }
 .ly6-mobile:before {

@@ -9,7 +9,7 @@ export class ProductsComponent implements OnInit {
 
   heading = 'Productos';
   subheading = '';
-  icon = 'ly6-products icon-gradient bg-tempting-azure';
+  icon = 'ly6-boxes icon-gradient bg-tempting-azure';
   constructor() { }
 
   ngOnInit(): void {
