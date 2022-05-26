@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ProductsComponent } from './products/products.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { DxDataGridModule } from 'devextreme-angular';
 
 const routes: Routes = [
   {path: '', component: ProductsComponent}
@@ -16,7 +17,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    ComponentsModule
+    ComponentsModule,
+    DxDataGridModule
   ]
 })
 export class InventoriesModule { }

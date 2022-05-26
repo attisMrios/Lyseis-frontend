@@ -34,6 +34,8 @@
     "chartjs-adapter-luxon": "^0.2.2",
     "chartjs-plugin-annotation": "^0.5.7",
     "chartjs-plugin-datalabels": "^0.7.0",
+    "devextreme": "^21.2.7",
+    "devextreme-angular": "^21.2.7",
     "font-awesome": "^4.7.0",
     "lodash-es": "^4.17.21",
     "ng2-charts": "^2.4.2",

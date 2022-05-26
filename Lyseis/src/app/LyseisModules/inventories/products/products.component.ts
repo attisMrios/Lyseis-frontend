@@ -8,11 +8,14 @@ import { Component, OnInit } from '@angular/core';
 export class ProductsComponent implements OnInit {
 
   heading = 'Productos';
-  subheading = '';
+  subheading = 'Cree, modifique y elimine sus productos, algunas funciones pueden requerir permisos de administrador';
   icon = 'ly6-boxes icon-gradient bg-tempting-azure';
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  Crear(){
+    alert('hola');
+  }
 }
