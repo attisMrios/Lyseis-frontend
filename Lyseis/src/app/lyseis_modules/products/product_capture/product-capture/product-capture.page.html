@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{page_title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="product_form" (ngSubmit)="SaveProduct()">
+    <ion-card>
+      <ion-card-header>
+        <ion-grid>
+          <ion-row>
+            <ion-col size-xs="12" size-sm="2" size-md="2" class="center-picture">
+              <img class="product-image" [src]="product_picture" (error)="ErrorImage($event)" >
+                <div class="custom-input-file col-md-6 col-sm-6 col-xs-6">
+                  <input type="file" name="product_picture" class="input-file" (change)="SelectPicture($event)">
+                  Change picture...
+                </div>
+            </ion-col>
+            <ion-col size-xs="12" size-sm="10" size-md="10">
+              <ion-card-subtitle>{{product_form.controls['code'].value || '0000'}}</ion-card-subtitle>
+              <ion-card-title>{{product_form.controls['description'].value || 'Your product description will be shown here'}}</ion-card-title>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-header>
+    </ion-card>
+    <ion-card>
+        <ion-grid>
+          <ion-row>
+            <ion-col size-xs="12" size-md="6">
+              <ion-item lines="full">
+                <ion-label position="floating">Code</ion-label>
+                <ion-input type="text" (focusout)="VerifiCode()" required formControlName="code"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col size-xs="12" size-md="6">
+              <ion-item lines="full">
+                <ion-label position="floating">Description</ion-label>
+                <ion-input type="text" required formControlName="description"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col size-xs="12" size-md="6">
+              <ion-item lines="full">
+                <ion-label position="floating">Price</ion-label>
+                <ion-input type="number" required formControlName="price"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col size-xs="12" size-md="6">
+              <ion-item lines="full">
+                <ion-label position="floating">Tax</ion-label>
+                <ion-input type="number" required formControlName="tax"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+    </ion-card>
+    
+    <ion-grid>
+      <ion-row>
+        <ion-col size-md="4" push-md="4" sieze-xs="12">
+          <ion-button type="submit" color="danger" expand="block">Save product info</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
