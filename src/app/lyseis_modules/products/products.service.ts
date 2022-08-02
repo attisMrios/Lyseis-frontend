@@ -18,7 +18,7 @@ export class ProductsService extends BaseService {
     super(http, cookies, messages);
   }
 
-  ReadProducts(): Observable<any> {
+  Read(): Observable<any> {
     return new Observable(observer => {
 
         const serverEvents = new EventSource("http://localhost:3000/api/generic/read?process=products");
@@ -33,7 +33,7 @@ export class ProductsService extends BaseService {
     return this.ConsumeService('api/generic/create', 'post', data)
   }
 
-  UpdateProduct(data: Ly6Request<ProductsModel>) {
+  Update(data: Ly6Request<ProductsModel>) {
     return this.ConsumeService(`api/generic/update`, 'put', data);
   }
 

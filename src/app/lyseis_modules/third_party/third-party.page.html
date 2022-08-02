@@ -1,0 +1,64 @@
+<ion-header [translucent]="true">
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="start1">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Third Party</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Third Party</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="container">
+    <dx-data-grid 
+      #thirdPartyGrid
+      id="gridContainer" 
+      [dataSource]="thirdPartyDataSource" 
+      keyExpr="id" 
+      [columnHidingEnabled]="true"
+      [hoverStateEnabled]="true"
+      [showBorders]="true">
+      <dxo-selection mode="multiple"></dxo-selection>
+      <dxo-pager [allowedPageSizes]="[5, 8, 15, 30]" [showInfo]="true" [showNavigationButtons]="true"
+        [showPageSizeSelector]="true" [visible]="true">
+      </dxo-pager>
+
+      <dxo-paging [pageSize]="8"></dxo-paging>
+      <dxo-column-chooser [enabled]="true" mode="select"></dxo-column-chooser>
+
+      <dxi-column dataField="code" [hidingPriority]="1" caption="Code"></dxi-column>
+      <dxi-column dataField="description" caption="Description"></dxi-column>
+      <dxi-column dataField="price" [hidingPriority]="0" caption="Price" dataType="number" format="currency"></dxi-column>
+    </dx-data-grid>
+
+  </div>
+
+  <!-- fab placed to the top and end and on the top edge of the content overlapping header -->
+  <ion-fab vertical="top" horizontal="end" edge slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="apps-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="bottom">
+      <ion-fab-button>
+        <ion-icon (click)="OpenCrudModal()" name="add-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button>
+        <ion-icon (click)="OpenCrudModal(thirdPartyGrid.instance.getSelectedRowsData()[0])" name="pencil-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="delete(thirdPartyGrid.instance.getSelectedRowsData())">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+
+</ion-content>

@@ -60,7 +60,7 @@ export class ProductCapturePage implements OnInit {
             }
           )
         } else if(this.action == 'update') {
-          this.ProductsService.UpdateProduct({process: 'products', data: this.product_form.value}).subscribe(
+          this.ProductsService.Update({process: 'products', data: this.product_form.value}).subscribe(
             (response: Ly6Response<ProductsModel>) => {
               this.messages.ShowToast(response.message)
               this.modalCtrl.dismiss();

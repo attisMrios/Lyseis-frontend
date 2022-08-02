@@ -1,36 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { ActionSheetController, ModalController } from '@ionic/angular';
 import { MessagesService } from 'src/app/utils/messages.service';
-import ProductsModel from './products.model';
-import { ProductsService } from './products.service';
-import { ProductCapturePage } from './product_capture/product-capture/product-capture.page';
+import { ThirdPartyCapturePage } from './third-party-capture/third-party-capture.page';
+import ThirdPartyModel from './third-party.model';
+import { ThirdPartyService } from './third-party.service';
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.page.html',
-  styleUrls: ['./products.page.scss'],
+  selector: 'app-third-party',
+  templateUrl: './third-party.page.html',
+  styleUrls: ['./third-party.page.scss'],
 })
-export class ProductsPage implements OnInit {
+export class ThirdPartyPage implements OnInit {
 
-  productsDataSource: Array<ProductsModel>;
-  productsSelectedList: any;
+  thirdPartyDataSource: Array<ThirdPartyModel> = [];
+  thirdPartySelectedList: Array<ThirdPartyModel>
 
-  constructor(private productsService: ProductsService,
-    private messages: MessagesService,
-    private modalCtrl: ModalController,
-    public actionSheetController: ActionSheetController,) { }
+  constructor(private thirdPartyService: ThirdPartyService,
+              private messages: MessagesService,
+              private modalCtrl: ModalController,
+              public actionSheetController: ActionSheetController) { }
 
-    /**
-     * load products an subscribe to server side events
-     */
   ngOnInit() {
     try {
-      this.productsService.Read().subscribe(data => {
-        this.productsDataSource = data;
+      this.thirdPartyService.Read().subscribe(data => {
+        this.thirdPartyDataSource = data;
       })
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
-
+      this.messages.ShowAlert(error.message);
     }
   }
 
@@ -38,7 +35,7 @@ export class ProductsPage implements OnInit {
    * open crud modal for update or create data
    * @param action crud action may set create or update
    */
-  OpenCrudModal(product: ProductsModel = null) {
+   OpenCrudModal(product: ThirdPartyModel = null) {
     if (product) {
         this.openModal(product);
     } else {
@@ -50,10 +47,10 @@ export class ProductsPage implements OnInit {
    * open crud modal for update or create data
    * @param action crud action may set create or update
    */
-  async openModal(product: ProductsModel = null) {
+  async openModal(product: ThirdPartyModel = null) {
 
     const modal = await this.modalCtrl.create({
-      component: ProductCapturePage,
+      component: ThirdPartyCapturePage,
       swipeToClose: true,
       componentProps: {
         product: (product) ? product : null,
@@ -68,8 +65,8 @@ export class ProductsPage implements OnInit {
    * delete products array
    * @param selectedProducts products list to delete
    */
-  delete(selectedProducts: Array<ProductsModel>) {
-    this.productsSelectedList = selectedProducts
+  delete(selectedProducts: Array<ThirdPartyModel>) {
+    this.thirdPartySelectedList = selectedProducts
     this.presentActionSheet()
   }
 
@@ -88,9 +85,9 @@ export class ProductsPage implements OnInit {
           type: 'delete'
         },
         handler: () => {
-          if (this.productsSelectedList.length > 0) {
-            this.productsSelectedList.forEach(item => {
-              this.productsService.Delete(item.id).subscribe(
+          if (this.thirdPartySelectedList.length > 0) {
+            this.thirdPartySelectedList.forEach(item => {
+              this.thirdPartyService.Delete(item.id).subscribe(
                 response => {
                   this.messages.ShowToast(response.message)
                 },
@@ -116,6 +113,5 @@ export class ProductsPage implements OnInit {
 
     await actionSheet.onDidDismiss();
   }
-
 
 }

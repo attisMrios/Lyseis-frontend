@@ -1,0 +1,14 @@
+- add product page
+- add model
+- define data source
+- define list for selected items
+- add service
+- add service to contructor
+- add messages services to constructor
+- add modal controller to constructor
+- add action sheet controller to constructor
+- add method read to service
+- subscribe an observable to read the server side events
+  into ngOnInit event
+- add method open crud modal
+- add method open modal this is called by open crud modal
