@@ -4,5 +4,5 @@ export default class ProductsModel {
     description?: string;
     price?: number;
     tax?: number;
-    picture?: string;
+    picture_path?: string;
 }

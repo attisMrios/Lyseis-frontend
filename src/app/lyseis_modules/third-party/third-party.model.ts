@@ -5,6 +5,5 @@ export default class ThirdPartyModel {
     address: string;
     e_mail: string;
     phone: string;
-    mobile: string;
     picture_path: string;
 }

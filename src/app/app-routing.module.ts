@@ -22,9 +22,10 @@ const routes: Routes = [
     path: 'products',
     canActivate: [SecureGuard],
     loadChildren: () => import('./lyseis_modules/products/products.module').then( m => m.ProductsPageModule)
-  },  {
+  },
+  {
     path: 'third-party',
-    loadChildren: () => import('./lyseis_modules/third_party/third-party/third-party.module').then( m => m.ThirdPartyPageModule)
+    loadChildren: () => import('./lyseis_modules/third-party/third-party.module').then( m => m.ThirdPartyPageModule)
   }
 
 
