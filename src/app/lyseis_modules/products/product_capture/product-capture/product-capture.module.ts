@@ -3,9 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
-
-import { ProductCapturePageRoutingModule } from './product-capture-routing.module';
-
 import { ProductCapturePage } from './product-capture.page';
 
 @NgModule({
@@ -13,7 +10,6 @@ import { ProductCapturePage } from './product-capture.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ProductCapturePageRoutingModule,
     ReactiveFormsModule
   ],
   declarations: [ProductCapturePage]

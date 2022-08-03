@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import BaseService from 'src/app/utils/base.service';
 import { CookieStorageService } from 'src/app/utils/cookie-storage.service';
 import { MessagesService } from 'src/app/utils/messages.service';
-import { Ly6Response, Ly6Services as Ly6Request } from 'src/types';
+import { Ly6Process, Ly6Response, Ly6Services as Ly6Request } from 'src/app/types';
 import ThirdPartyModel from './third-party.model';
 
 @Injectable({
@@ -18,9 +18,9 @@ export class ThirdPartyService extends BaseService {
     super(http, cookies, messages);
   }
 
-  Read(): Observable<any> {
+  Read(process: Ly6Process): Observable<any> {
     return new Observable(observer => {
-      const serverEvents = new EventSource("http://localhost:3000/api/generic/read?process=third_party");
+      const serverEvents = new EventSource(`http://localhost:3000/api/generic/read?process=${process}`);
 
       serverEvents.onmessage = function (event) {
         observer.next(JSON.parse(event.data));
@@ -36,11 +36,11 @@ export class ThirdPartyService extends BaseService {
     return this.ConsumeService(`api/generic/update`, 'put', data);
   }
 
-  Delete(id: number): Observable<Ly6Response<Array<ThirdPartyModel>>> {
-    return this.ConsumeService(`api/generic/delete?process=products&id=${id}`, 'delete')
+  Delete(id: number, process: Ly6Process): Observable<Ly6Response<Array<ThirdPartyModel>>> {
+    return this.ConsumeService(`api/generic/delete?process=${process}&id=${id}`, 'delete')
   }
 
-  SearchByCode(code: any): Observable<Ly6Response<Array<ThirdPartyModel>>> {
-    return this.ConsumeService('api/generic/searchbyfield', 'post', { process: 'products', data: `code='${code}'` })
+  SearchByCode(data: string, process: Ly6Process): Observable<Ly6Response<Array<ThirdPartyModel>>> {
+    return this.ConsumeService('api/generic/searchbyfield', 'post', { process: process, data: data })
   }
 }

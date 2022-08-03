@@ -36,9 +36,12 @@
       <dxo-paging [pageSize]="8"></dxo-paging>
       <dxo-column-chooser [enabled]="true" mode="select"></dxo-column-chooser>
 
-      <dxi-column dataField="code" [hidingPriority]="1" caption="Code"></dxi-column>
-      <dxi-column dataField="description" caption="Description"></dxi-column>
-      <dxi-column dataField="price" [hidingPriority]="0" caption="Price" dataType="number" format="currency"></dxi-column>
+      <dxi-column dataField="identification" [hidingPriority]="1" caption="Identification"></dxi-column>
+      <dxi-column dataField="name" caption="Name"></dxi-column>
+      <dxi-column dataField="last_name" caption="Last Name"></dxi-column>
+      <dxi-column dataField="e_mail" caption="E-mail"></dxi-column>
+      <dxi-column dataField="phone" caption="Phone"></dxi-column>
+      <dxi-column dataField="address"  caption="address"></dxi-column>
     </dx-data-grid>
 
   </div>

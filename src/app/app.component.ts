@@ -16,7 +16,8 @@ export class AppComponent implements OnInit {
   public loadLayout = false;
   public appPages = [
     { title: 'Home', url: '/folder/Home', icon: 'home' },
-    { title: 'Products', url: '/products', icon: 'paper-plane' }
+    { title: 'Products', url: '/products', icon: 'paper-plane' },
+    { title: 'Third party', url: '/third-party', icon: 'paper-plane' }
   ];
 
   constructor(private cookies: CookieStorageService, private loginService: LoginService, public messages: MessagesService) {
@@ -29,8 +30,8 @@ export class AppComponent implements OnInit {
     }
   }
 
-  login(user_name: string, password: string) {
-    this.loginService.Login(user_name, password).subscribe(
+  login(user_name: string | number, password: string | number) {
+    this.loginService.Login(user_name.toString(), password.toString()).subscribe(
       data => {
         this.messages.ShowToast("welcome");
         document.cookie = `access_token=${data.token}`;

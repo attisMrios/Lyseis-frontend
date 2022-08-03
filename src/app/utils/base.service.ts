@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Ly6ContentTypes, Ly6Methods } from 'src/types';
+import { Ly6ContentTypes, Ly6Methods } from 'src/app/types';
 import { CookieStorageService } from './cookie-storage.service';
 import { MessagesService } from './messages.service';
 export default class BaseService {

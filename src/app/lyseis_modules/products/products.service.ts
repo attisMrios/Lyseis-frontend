@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import BaseService from 'src/app/utils/base.service';
 import { CookieStorageService } from 'src/app/utils/cookie-storage.service';
 import { MessagesService } from 'src/app/utils/messages.service';
-import { Ly6Response, Ly6Services as Ly6Request } from 'src/types';
+import { Ly6Response, Ly6Services as Ly6Request } from 'src/app/types';
 import ProductsModel from './products.model';
 
 @Injectable({

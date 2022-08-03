@@ -7,10 +7,6 @@ const routes: Routes = [
   {
     path: '',
     component: ThirdPartyPage
-  },
-  {
-    path: 'third-party-capture',
-    loadChildren: () => import('./third-party-capture/third-party-capture.module').then( m => m.ThirdPartyCapturePageModule)
   }
 ];
 
@@ -18,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ThirdPartyPageRoutingModule {}
+export class ThirdPartyRoutingModule {}

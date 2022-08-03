@@ -22,7 +22,7 @@ export class ThirdPartyPage implements OnInit {
 
   ngOnInit() {
     try {
-      this.thirdPartyService.Read().subscribe(data => {
+      this.thirdPartyService.Read('third_party').subscribe(data => {
         this.thirdPartyDataSource = data;
       })
     } catch (error: any) {
@@ -87,7 +87,7 @@ export class ThirdPartyPage implements OnInit {
         handler: () => {
           if (this.thirdPartySelectedList.length > 0) {
             this.thirdPartySelectedList.forEach(item => {
-              this.thirdPartyService.Delete(item.id).subscribe(
+              this.thirdPartyService.Delete(item.id, 'third_party').subscribe(
                 response => {
                   this.messages.ShowToast(response.message)
                 },

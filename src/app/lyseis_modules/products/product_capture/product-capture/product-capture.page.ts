@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Ly6CrudActions, Ly6Response } from 'src/types';
+import { Ly6CrudActions, Ly6Response } from 'src/app/types';
 import ProductsModel from '../../products.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessagesService } from 'src/app/utils/messages.service';
@@ -32,7 +32,7 @@ export class ProductCapturePage implements OnInit {
       description: ['', [Validators.required, Validators.maxLength(1000)]],
       price: ['', [Validators.required]],
       tax: ['', Validators.required],
-      picture: ['pending']
+      picture_path: ['pending']
     })
   }
 
@@ -96,7 +96,7 @@ export class ProductCapturePage implements OnInit {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       //this.product_form.get('profile').setValue(file);
-      this.product_form.controls['picture'].patchValue(file);
+      this.product_form.controls['picture_path'].patchValue(file);
     }
   }
 
