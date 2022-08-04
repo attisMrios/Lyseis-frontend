@@ -18,7 +18,7 @@ export class ThirdPartyCapturePage implements OnInit {
   @Input() action: Ly6CrudActions;
 
   page_title: string = '';
-  third_party_form: FormGroup;
+  form: FormGroup;
   product_picture: any
 
   constructor(
@@ -27,7 +27,7 @@ export class ThirdPartyCapturePage implements OnInit {
     private thirdPartyService: ThirdPartyService,
     private modalCtrl: ModalController) {
 
-    this.third_party_form = this.form_builder.group({
+    this.form = this.form_builder.group({
       id: [0, [Validators.required]],
       identification: [null, [Validators.required]],
       name: ['', [Validators.required, Validators.maxLength(50)]],
@@ -42,16 +42,16 @@ export class ThirdPartyCapturePage implements OnInit {
   ngOnInit() {
     this.page_title = (this.action == 'create') ? 'Creating third party' : (this.action == 'update') ? 'Updating third party' : 'Third party';
     if(this.action == 'update'){
-      this.third_party_form.patchValue(this.product);
+      this.form.patchValue(this.product);
     }
   }
 
   Save() {
     try {
 
-      if(this.third_party_form.valid){
+      if(this.form.valid){
         if(this.action == 'create'){
-          this.thirdPartyService.Create({ process: 'third_party', data: this.third_party_form.value }).subscribe(
+          this.thirdPartyService.Create({ process: 'third_party', data: this.form.value }).subscribe(
             (response: Ly6Response<Array<ThirdPartyModel>>) => {
               this.messages.ShowToast(response.message)
               this.modalCtrl.dismiss();
@@ -63,7 +63,7 @@ export class ThirdPartyCapturePage implements OnInit {
             }
           )
         } else if(this.action == 'update') {
-          this.thirdPartyService.Update({process: 'third_party', data: this.third_party_form.value}).subscribe(
+          this.thirdPartyService.Update({process: 'third_party', data: this.form.value}).subscribe(
             (response: Ly6Response<Array<ThirdPartyModel>>) => {
               this.messages.ShowToast(response.message)
               this.modalCtrl.dismiss();
@@ -99,7 +99,7 @@ export class ThirdPartyCapturePage implements OnInit {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       //this.product_form.get('profile').setValue(file);
-      this.third_party_form.controls['picture_path'].patchValue(file);
+      this.form.controls['picture_path'].patchValue(file);
     }
   }
 
@@ -108,10 +108,10 @@ export class ThirdPartyCapturePage implements OnInit {
    */
   VerifyCode() {
     try {
-      this.thirdPartyService.SearchByCode(`identification = ${this.third_party_form.controls['identification'].value}`, 'third_party').subscribe(response => {
+      this.thirdPartyService.SearchByCode(`identification = ${this.form.controls['identification'].value}`, 'third_party').subscribe(response => {
         if(response.data.length > 0){
-          this.messages.ShowToast(`The third party with identification ${this.third_party_form.controls['identification'].value} alredy exist, you must set a different identification`);
-          this.third_party_form.controls['identification'].patchValue('');
+          this.messages.ShowToast(`The third party with identification ${this.form.controls['identification'].value} alredy exist, you must set a different identification`);
+          this.form.controls['identification'].patchValue('');
         }
       })
     } catch (error) {
@@ -121,6 +121,11 @@ export class ThirdPartyCapturePage implements OnInit {
 
   ErrorImage(element: any) {
     element.target.src = Globals.DEFAULT_PICTURE
+  }
+
+  Cancel() {
+    this.form.reset();
+    this.modalCtrl.dismiss();
   }
 
 }

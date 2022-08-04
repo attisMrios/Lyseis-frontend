@@ -1,17 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Ly6Process, Ly6Response, Ly6Request } from 'src/app/types';
 import BaseService from 'src/app/utils/base.service';
 import { CookieStorageService } from 'src/app/utils/cookie-storage.service';
 import { MessagesService } from 'src/app/utils/messages.service';
-import { Ly6Process, Ly6Response, Ly6Request } from 'src/app/types';
-import ThirdPartyModel from './third-party.model';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ThirdPartyService extends BaseService {
+export class GenericCrudService extends BaseService{
 
   constructor(public http: HttpClient,
     public cookies: CookieStorageService,
@@ -30,11 +29,11 @@ export class ThirdPartyService extends BaseService {
     })
   }
 
-  Create<T>(data: Ly6Request<ThirdPartyModel>): Observable<Ly6Response<Array<T>>> {
+  Create<T>(data: Ly6Request<T>): Observable<Ly6Response<Array<T>>> {
     return this.ConsumeService('api/generic/create', 'post', data)
   }
 
-  Update<T>(data: Ly6Request<ThirdPartyModel>): Observable<Ly6Response<Array<T>>> {
+  Update<T>(data: Ly6Request<T>): Observable<Ly6Response<Array<T>>> {
     return this.ConsumeService(`api/generic/update`, 'put', data);
   }
 

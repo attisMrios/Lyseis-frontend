@@ -18,7 +18,7 @@ export class ProductCapturePage implements OnInit {
   @Input() action: Ly6CrudActions;
 
   page_title: string = '';
-  product_form: FormGroup;
+  form: FormGroup;
   product_picture: any
 
   constructor(
@@ -26,7 +26,7 @@ export class ProductCapturePage implements OnInit {
     private messages: MessagesService,
     private ProductsService: ProductsService,
     private modalCtrl: ModalController) {
-    this.product_form = this.form_builder.group({
+    this.form = this.form_builder.group({
       id: [0, [Validators.required]],
       code: ['', [Validators.required, Validators.maxLength(5)]],
       description: ['', [Validators.required, Validators.maxLength(1000)]],
@@ -39,17 +39,17 @@ export class ProductCapturePage implements OnInit {
   ngOnInit() {
     this.page_title = (this.action == 'create') ? 'Creating product' : (this.action == 'update') ? 'Updating product' : 'Product';
     if(this.action == 'update'){
-      this.product_form.patchValue(this.product);
+      this.form.patchValue(this.product);
     }
   }
 
-  SaveProduct() {
+  Save() {
     try {
 
-      if(this.product_form.valid){
+      if(this.form.valid){
         if(this.action == 'create'){
-          this.ProductsService.Create({ process: 'products', data: this.product_form.value }).subscribe(
-            (response: Ly6Response<ProductsModel>) => {
+          this.ProductsService.Create<ProductsModel>({ process: 'products', data: this.form.value }).subscribe(
+            (response: Ly6Response<Array<ProductsModel>>) => {
               this.messages.ShowToast(response.message)
               this.modalCtrl.dismiss();
             },
@@ -60,8 +60,8 @@ export class ProductCapturePage implements OnInit {
             }
           )
         } else if(this.action == 'update') {
-          this.ProductsService.Update({process: 'products', data: this.product_form.value}).subscribe(
-            (response: Ly6Response<ProductsModel>) => {
+          this.ProductsService.Update<ProductsModel>({process: 'products', data: this.form.value}).subscribe(
+            (response: Ly6Response<Array<ProductsModel>>) => {
               this.messages.ShowToast(response.message)
               this.modalCtrl.dismiss();
             },
@@ -96,7 +96,7 @@ export class ProductCapturePage implements OnInit {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       //this.product_form.get('profile').setValue(file);
-      this.product_form.controls['picture_path'].patchValue(file);
+      this.form.controls['picture_path'].patchValue(file);
     }
   }
 
@@ -105,10 +105,10 @@ export class ProductCapturePage implements OnInit {
    */
   VerifiCode() {
     try {
-      this.ProductsService.SearchByCode(this.product_form.controls['code'].value).subscribe(response => {
+      this.ProductsService.SearchByCode<ProductsModel>(` code='${this.form.controls['code'].value}' `, 'products').subscribe(response => {
         if(response.data.length > 0){
-          this.messages.ShowToast(`The product with code ${this.product_form.controls['code'].value} alredy exist, you must set a different code`);
-          this.product_form.controls['code'].patchValue('');
+          this.messages.ShowToast(`The product with code ${this.form.controls['code'].value} alredy exist, you must set a different code`);
+          this.form.controls['code'].patchValue('');
         }
       })
     } catch (error) {
@@ -118,5 +118,10 @@ export class ProductCapturePage implements OnInit {
 
   ErrorImage(element: any) {
     element.target.src = Globals.DEFAULT_PICTURE
+  }
+
+  Cancel() {
+    this.form.reset();
+    this.modalCtrl.dismiss();
   }
 }

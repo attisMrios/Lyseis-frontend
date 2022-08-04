@@ -4,13 +4,18 @@ import { environment } from 'src/environments/environment';
 import { Ly6ContentTypes, Ly6Methods } from 'src/app/types';
 import { CookieStorageService } from './cookie-storage.service';
 import { MessagesService } from './messages.service';
+import { Router } from '@angular/router';
 export default class BaseService {
 
-    constructor(public http: HttpClient, public cookies: CookieStorageService, public messages: MessagesService) {
+    constructor(public http: HttpClient,
+                public cookies: CookieStorageService,
+                public messages: MessagesService,
+                public router: Router) {
 
     }
     protected ConsumeService(end_point: string, method: Ly6Methods, data?: any, content_type: Ly6ContentTypes = 'application/json'): Observable<any> {
-        const headers = {};
+        return new Observable(observer => {
+            const headers = {};
         let observable: any;
         try {
             headers['Authorization'] = `Bearer ${this.cookies.GetCookie('token')}`;
@@ -19,19 +24,71 @@ export default class BaseService {
             end_point = `${environment.lyseis.base_url}/${end_point}`;
             switch (method) {
                 case 'post':
-                    observable = this.http.post(end_point, data, { headers: headers })
+                    this.http.post(end_point, data, { headers: headers }).subscribe(
+                        response => {
+                            observer.next(response);
+                        },
+                        error => {
+                            if(error.status == 401) {
+                                // debe borrar cookies
+                                this.cookies.ClearCookie('access_token')
+                                // debe redireccionar al login
+                                this.router.navigate['/']
+                            }
+                            observer.error(error);
+                        }
+                    )
                     break;
 
                 case 'get':
-                    observable = this.http.get(end_point, { headers: headers });
+                    this.http.get(end_point, { headers: headers }).subscribe(
+                        response => {
+                            observer.next(response);
+                        },
+                        error => {
+                            if(error.status == 401) {
+                                // debe borrar cookies
+                                this.cookies.ClearCookie('access_token')
+                                // debe redireccionar al login
+                                this.router.navigate['/']
+                            }
+                            observer.error(error);
+                        }
+                    )
                     break;
 
                 case 'delete':
-                    observable = this.http.delete(end_point, { headers: headers })
+                    this.http.delete(end_point, { headers: headers }).subscribe(
+                        response => {
+                            observer.next(response);
+                        },
+                        error => {
+                            if(error.status == 401) {
+                                // debe borrar cookies
+                                this.cookies.ClearCookie('access_token')
+                                // debe redireccionar al login
+                                this.router.navigate['/']
+                            }
+                            observer.error(error);
+                        }
+                    )
                     break;
 
                 case 'put':
-                    observable = this.http.put(end_point, data, { headers: headers })
+                    this.http.put(end_point, data, { headers: headers }).subscribe(
+                        response => {
+                            observer.next(response);
+                        },
+                        error => {
+                            if(error.status == 401) {
+                                // debe borrar cookies
+                                this.cookies.ClearCookie('access_token')
+                                // debe redireccionar al login
+                                this.router.navigate['/']
+                            }
+                            observer.error(error);
+                        }
+                    )
                     break;
             }
         } catch (error) {
@@ -39,5 +96,6 @@ export default class BaseService {
         }
 
         return observable;
+        })
     }
 }

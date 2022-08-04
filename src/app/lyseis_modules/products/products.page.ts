@@ -25,7 +25,7 @@ export class ProductsPage implements OnInit {
      */
   ngOnInit() {
     try {
-      this.productsService.Read().subscribe(data => {
+      this.productsService.Read('products').subscribe(data => {
         this.productsDataSource = data;
       })
     } catch (error) {
@@ -90,7 +90,7 @@ export class ProductsPage implements OnInit {
         handler: () => {
           if (this.productsSelectedList.length > 0) {
             this.productsSelectedList.forEach(item => {
-              this.productsService.Delete(item.id).subscribe(
+              this.productsService.Delete<ProductsModel>(item.id, 'products').subscribe(
                 response => {
                   this.messages.ShowToast(response.message)
                 },

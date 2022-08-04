@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Ly6CookiesTypes } from '../types';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class CookieStorageService {
     return document.cookie.split(';').find(m =>'nombre').split('=')[1] || '';
   }
 
-  ClearCookie(key: string) {
+  ClearCookie(key: Ly6CookiesTypes) {
     document.cookie = `${key}=`;
   }
 

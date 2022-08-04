@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="third_party_form" (ngSubmit)="Save()">
+  <form [formGroup]="form" (ngSubmit)="Save()">
     <ion-card>
       <ion-card-header>
         <ion-grid>
@@ -18,8 +18,8 @@
                 </div>
             </ion-col>
             <ion-col size-xs="12" size-sm="10" size-md="10">
-              <ion-card-subtitle>{{third_party_form.controls.identification.value || '0000'}}</ion-card-subtitle>
-              <ion-card-title>{{third_party_form.controls.last_name.value.toUpperCase() + ' ' + third_party_form.controls['name'].value.toUpperCase() || 'Last name and first name should be appear here'}}</ion-card-title>
+              <ion-card-subtitle>{{form.controls.identification.value || '0000'}}</ion-card-subtitle>
+              <ion-card-title>{{form.controls.last_name.value.toUpperCase() + ' ' + form.controls['name'].value.toUpperCase() || 'Last name and first name should be appear here'}}</ion-card-title>
             </ion-col>
           </ion-row>
         </ion-grid>
@@ -67,13 +67,19 @@
           </ion-row>
         </ion-grid>
     </ion-card>
-    
-    <ion-grid>
-      <ion-row>
-        <ion-col size-md="4" push-md="4" sieze-xs="12">
-          <ion-button type="submit" color="danger" expand="block">Save product info</ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
   </form>
+  <!-- fab placed to the top and end and on the top edge of the content overlapping header -->
+  <ion-fab vertical="top" horizontal="end" edge slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="apps-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="bottom">
+      <ion-fab-button (click)="Save()">
+        <ion-icon name="save-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="Cancel()">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
 </ion-content>
