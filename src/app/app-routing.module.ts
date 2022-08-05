@@ -5,27 +5,39 @@ import { SecureGuard } from './secure.guard';
 const routes: Routes = [
   {
     path:'*',
-    redirectTo: 'folder/home',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
     path: '',
-    redirectTo: 'folder/Home',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
-    path: 'folder/:id',
+    path: 'home',
     canActivate: [SecureGuard],
     loadChildren: () => import('./layout/folder.module').then( m => m.FolderPageModule)
   },
   {
     path: 'products',
     canActivate: [SecureGuard],
-    loadChildren: () => import('./lyseis_modules/products/products.module').then( m => m.ProductsPageModule)
+    loadChildren: () => import('./lyseis_modules/inventories/products/products.module').then( m => m.ProductsPageModule)
   },
   {
     path: 'third-party',
     loadChildren: () => import('./lyseis_modules/third-party/third-party.module').then( m => m.ThirdPartyPageModule)
+  },
+  {
+    path: 'documents',
+    loadChildren: () => import('./lyseis_modules/documents/documents.module').then( m => m.DocumentsPageModule)
+  },
+  {
+    path: 'control-panel',
+    loadChildren: () => import('./lyseis_modules/admin/control-panel/control-panel.module').then( m => m.ControlPanelPageModule)
+  },
+  {
+    path: 'inventories',
+    loadChildren: () => import('./lyseis_modules/inventories/inventories.module').then( m => m.InventoriesPageModule)
   }
 
 

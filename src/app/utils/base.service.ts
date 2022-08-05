@@ -29,7 +29,7 @@ export default class BaseService {
                             observer.next(response);
                         },
                         error => {
-                            if(error.status == 401) {
+                            if(error.status == 403) {
                                 // debe borrar cookies
                                 this.cookies.ClearCookie('access_token')
                                 // debe redireccionar al login
@@ -46,7 +46,7 @@ export default class BaseService {
                             observer.next(response);
                         },
                         error => {
-                            if(error.status == 401) {
+                            if(error.status == 403) {
                                 // debe borrar cookies
                                 this.cookies.ClearCookie('access_token')
                                 // debe redireccionar al login
@@ -63,7 +63,7 @@ export default class BaseService {
                             observer.next(response);
                         },
                         error => {
-                            if(error.status == 401) {
+                            if(error.status == 403) {
                                 // debe borrar cookies
                                 this.cookies.ClearCookie('access_token')
                                 // debe redireccionar al login
@@ -80,7 +80,7 @@ export default class BaseService {
                             observer.next(response);
                         },
                         error => {
-                            if(error.status == 401) {
+                            if(error.status == 403) {
                                 // debe borrar cookies
                                 this.cookies.ClearCookie('access_token')
                                 // debe redireccionar al login
