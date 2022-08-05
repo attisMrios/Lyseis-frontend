@@ -25,7 +25,7 @@ const routes: Routes = [
   },
   {
     path: 'third-party',
-    loadChildren: () => import('./lyseis_modules/third-party/third-party.module').then( m => m.ThirdPartyPageModule)
+    loadChildren: () => import('./lyseis_modules/common/third-party/third-party.module').then( m => m.ThirdPartyPageModule)
   },
   {
     path: 'documents',
@@ -38,7 +38,12 @@ const routes: Routes = [
   {
     path: 'inventories',
     loadChildren: () => import('./lyseis_modules/inventories/inventories.module').then( m => m.InventoriesPageModule)
+  },
+  {
+    path: 'common',
+    loadChildren: () => import('./lyseis_modules/common/common.module').then( m => m.CommonPageModule)
   }
+
 
 
 

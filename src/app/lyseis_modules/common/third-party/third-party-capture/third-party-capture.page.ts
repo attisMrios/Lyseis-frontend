@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import ThirdPartyModel from '../third-party.model';
-import { Ly6CrudActions, Ly6Response } from '../../../types'
+import { Ly6CrudActions, Ly6Response } from '../../../../types'
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import Globals from 'src/app/utils/globals';
