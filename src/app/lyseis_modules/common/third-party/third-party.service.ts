@@ -45,4 +45,8 @@ export class ThirdPartyService extends BaseService {
   SearchByCode<T>(data: string, process: Ly6Process): Observable<Ly6Response<Array<T>>> {
     return this.ConsumeService('api/generic/searchbyfield', 'post', { process: process, data: data })
   }
+
+  UploadPicture(form: FormData): Observable<void> {
+    return this.ConsumeService('api/files/thirdpartyimage', 'post', form, 'multipart/form-data')
+  }
 }
