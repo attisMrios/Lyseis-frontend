@@ -5,11 +5,13 @@ import { MenuService } from './lyseis_modules/common/menu.service';
 import { Ly6Response } from './types';
 import { CookieStorageService } from './utils/cookie-storage.service';
 import { MessagesService } from './utils/messages.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
+
 export class AppComponent implements OnInit {
 
   private static _instance: AppComponent;

@@ -1,4 +1,4 @@
-- add product page
+- add page
 - add model
 - define data source
 - define list for selected items

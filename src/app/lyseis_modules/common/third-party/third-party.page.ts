@@ -35,9 +35,9 @@ export class ThirdPartyPage implements OnInit {
    * open crud modal for update or create data
    * @param action crud action may set create or update
    */
-   OpenCrudModal(product: ThirdPartyModel = null) {
-    if (product) {
-        this.openModal(product);
+   OpenCrudModal(third_party: ThirdPartyModel = null) {
+    if (third_party) {
+        this.openModal(third_party);
     } else {
       this.openModal();
     }
@@ -47,14 +47,14 @@ export class ThirdPartyPage implements OnInit {
    * open crud modal for update or create data
    * @param action crud action may set create or update
    */
-  async openModal(product: ThirdPartyModel = null) {
+  async openModal(third_party: ThirdPartyModel = null) {
 
     const modal = await this.modalCtrl.create({
       component: ThirdPartyCapturePage,
       swipeToClose: true,
       componentProps: {
-        product: (product) ? product : null,
-        action: (product) ? 'update' : 'create'
+        third_party: (third_party) ? third_party : null,
+        action: (third_party) ? 'update' : 'create'
       },
       cssClass: 'ly6-modal'
     });

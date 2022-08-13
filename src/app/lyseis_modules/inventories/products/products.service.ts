@@ -15,10 +15,14 @@ import { GenericCrudService } from '../../common/generic-crud.service';
 export class ProductsService extends GenericCrudService {
   
   constructor(public http: HttpClient, 
-              public cookies: CookieStorageService,
-              public messages: MessagesService,
-              public router: Router) {
-    super(http, cookies, messages, router);
-  }
+    public cookies: CookieStorageService,
+    public messages: MessagesService,
+    public router: Router) {
+      super(http, cookies, messages, router);
+    }
+
+    UploadPicture(form: FormData): Observable<void> {
+      return this.ConsumeService('api/files/productimage', 'post', form, 'multipart/form-data')
+    }
 
 }

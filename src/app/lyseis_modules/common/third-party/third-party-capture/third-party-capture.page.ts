@@ -6,6 +6,7 @@ import { ModalController } from '@ionic/angular';
 import Globals from 'src/app/utils/globals';
 import { MessagesService } from 'src/app/utils/messages.service';
 import { ThirdPartyService } from '../third-party.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-third-party-capture',
@@ -14,12 +15,12 @@ import { ThirdPartyService } from '../third-party.service';
 })
 export class ThirdPartyCapturePage implements OnInit {
 
-  @Input() product: ThirdPartyModel;
+  @Input() third_party: ThirdPartyModel;
   @Input() action: Ly6CrudActions;
 
   page_title: string = '';
   form: FormGroup;
-  product_picture: any
+  third_party_picture: any
 
   constructor(
     private form_builder: FormBuilder,
@@ -42,7 +43,8 @@ export class ThirdPartyCapturePage implements OnInit {
   ngOnInit() {
     this.page_title = (this.action == 'create') ? 'Creating third party' : (this.action == 'update') ? 'Updating third party' : 'Third party';
     if (this.action == 'update') {
-      this.form.patchValue(this.product);
+      this.form.patchValue(this.third_party);
+      this.third_party_picture = `${environment.lyseis.base_url}/uploads/third_party/${this.form.controls.picture_path.value}`
     }
   }
 
@@ -76,7 +78,7 @@ export class ThirdPartyCapturePage implements OnInit {
           this.thirdPartyService.Update({ process: 'third_party', data: this.form.value }).subscribe(
             (response: Ly6Response<Array<ThirdPartyModel>>) => {
               this.messages.ShowToast(response.message)
-              if(file != null){
+              if (file != null) {
                 this.UploadFile(file, picture_name);
               }
               this.modalCtrl.dismiss();
@@ -128,13 +130,12 @@ export class ThirdPartyCapturePage implements OnInit {
       if (event.target.files && event.target.files[0]) {
         const file = event.target.files[0];
         const reader = new FileReader();
-        reader.onload = e => this.product_picture = reader.result;
+        reader.onload = e => this.third_party_picture = reader.result;
         reader.readAsDataURL(file);
       }
 
       if (event.target.files.length > 0) {
         const file = event.target.files[0];
-        //this.product_form.get('profile').setValue(file);
         this.form.controls['picture_path'].patchValue(file);
       }
     } catch (error) {

@@ -6,6 +6,7 @@ import { MessagesService } from 'src/app/utils/messages.service';
 import Globals from 'src/app/utils/globals';
 import { ProductsService } from '../../products.service';
 import { ModalController } from '@ionic/angular';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-product-capture',
@@ -40,6 +41,7 @@ export class ProductCapturePage implements OnInit {
     this.page_title = (this.action == 'create') ? 'Creating product' : (this.action == 'update') ? 'Updating product' : 'Product';
     if(this.action == 'update'){
       this.form.patchValue(this.product);
+      this.product_picture = `${environment.lyseis.base_url}/uploads/products/${this.form.controls.picture_path.value}`
     }
   }
 
@@ -47,10 +49,22 @@ export class ProductCapturePage implements OnInit {
     try {
 
       if(this.form.valid){
+
+        let file: File;
+        let picture_name: string;
+        if (this.form.controls.picture_path != null) {
+          file = this.form.controls.picture_path.value;
+          picture_name = `${this.form.controls.code.value}.${file.name.split('.')[1]}`
+          this.form.controls.picture_path.patchValue(picture_name)
+        }
+
         if(this.action == 'create'){
           this.ProductsService.Create<ProductsModel>({ process: 'products', data: this.form.value }).subscribe(
             (response: Ly6Response<Array<ProductsModel>>) => {
               this.messages.ShowToast(response.message)
+              if (file != null) {
+                this.UploadFile(file, picture_name);
+              }
               this.modalCtrl.dismiss();
             },
             error_response => {
@@ -63,6 +77,9 @@ export class ProductCapturePage implements OnInit {
           this.ProductsService.Update<ProductsModel>({process: 'products', data: this.form.value}).subscribe(
             (response: Ly6Response<Array<ProductsModel>>) => {
               this.messages.ShowToast(response.message)
+              if (file != null) {
+                this.UploadFile(file, picture_name);
+              }
               this.modalCtrl.dismiss();
             },
             error_response => {
@@ -81,6 +98,27 @@ export class ProductCapturePage implements OnInit {
   }
 
   /**
+   * upload service
+   */
+   UploadFile(file: File, picture_name: string) {
+    try {
+      let formData = new FormData();
+      formData.append('file', file);
+      formData.append('name', picture_name);
+      this.ProductsService.UploadPicture(formData).subscribe(
+        response => {
+          console.log(response);
+        },
+        error => {
+          console.log(error);
+        }
+      )
+    } catch (error) {
+      this.messages.ShowToast(error.message)
+    }
+  }
+
+  /**
    * select and save product picture
    * @param event file event
    */
@@ -95,7 +133,6 @@ export class ProductCapturePage implements OnInit {
 
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      //this.product_form.get('profile').setValue(file);
       this.form.controls['picture_path'].patchValue(file);
     }
   }
