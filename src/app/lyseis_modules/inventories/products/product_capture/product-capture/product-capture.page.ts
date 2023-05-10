@@ -29,7 +29,7 @@ export class ProductCapturePage implements OnInit {
     private modalCtrl: ModalController) {
     this.form = this.form_builder.group({
       id: [0, [Validators.required]],
-      code: ['', [Validators.required, Validators.maxLength(5)]],
+      code: ['', [Validators.required, Validators.maxLength(20)]],
       description: ['', [Validators.required, Validators.maxLength(1000)]],
       price: ['', [Validators.required]],
       tax: ['', Validators.required],
