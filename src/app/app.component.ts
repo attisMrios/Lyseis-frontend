@@ -5,6 +5,7 @@ import { MenuService } from './lyseis_modules/common/menu.service';
 import { Ly6Response } from './types';
 import { CookieStorageService } from './utils/cookie-storage.service';
 import { MessagesService } from './utils/messages.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,11 @@ import { MessagesService } from './utils/messages.service';
 export class AppComponent implements OnInit {
 
   private static _instance: AppComponent;
+  profileForm = this.builder.group({
+    userName: ['', [Validators.required]],
+    password: ['', [Validators.required]]
+  });
+
   public static get Instance(): AppComponent {
     return this._instance;
   }
@@ -46,8 +52,13 @@ export class AppComponent implements OnInit {
   constructor(private cookies: CookieStorageService,
     private loginService: LoginService,
     public messages: MessagesService,
-    private menu: MenuService) {
+    private menu: MenuService,
+    private builder: FormBuilder) {
     AppComponent._instance = this;
+    this.profileForm = this.builder.group({
+      userName: ['', [Validators.required]],
+      password: ['', [Validators.required]]
+    });
   }
 
   ngOnInit(): void {
@@ -57,8 +68,8 @@ export class AppComponent implements OnInit {
     }
   }
 
-  login(user_name: string | number, password: string | number) {
-    this.loginService.Login(user_name.toString(), password.toString()).subscribe(
+  login() {
+    this.loginService.Login(this.profileForm.controls.userName.value, this.profileForm.controls.password.value).subscribe(
       data => {
         this.messages.ShowToast("welcome");
         document.cookie = `access_token=${data.token}`;
@@ -119,7 +130,7 @@ export class AppComponent implements OnInit {
       }
     } catch (error) {
       console.log(error);
-      
+
     }
 
   }
